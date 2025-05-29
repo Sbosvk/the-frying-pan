@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  time.timeZone = "Europe/Stockholm";
-  i18n.defaultLocale = "en_US.UTF-8";
-
-   # LUKS-encrypted /home
   boot.initrd.luks.devices = {
     home = {
       device = "/dev/disk/by-uuid/4c96db13-b1ab-4c9b-bc85-a2dda35d8d44";
@@ -18,7 +14,28 @@
     fsType = "ext4";
   };
 
-  # Audio (example: pipewire)
+  fileSystems."/media/plex/Shows" = {
+    device = "/home/ardvard/Torrents/Shows";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+
+  fileSystems."/media/plex/Movies" = {
+    device = "/home/ardvard/Torrents/Movies";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+
+  users.users.ardvard = {
+    isNormalUser = true;
+    description = "Default User";
+    extraGroups = [ "wheel" "networkmanager" "audio" "video" ];
+    shell = pkgs.zsh;
+    # openssh.authorizedKeys.keys = [
+    #   "ssh-ed25519 AAAA... your_key_here"
+    # ];
+  };
+
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   services.pipewire = {
@@ -28,7 +45,6 @@
     pulse.enable = true;
   };
 
-  # SSH Hardening
   services.openssh = {
     enable = true;
     settings = {
@@ -38,39 +54,6 @@
     authorizedKeysFiles = [ "/etc/ssh/authorized_keys.d/%u" ];
   };
 
-  # Public keys for all users (example user setup)
-  # users.users.youruser.openssh.authorizedKeys.keys = [
-  #   "ssh-ed25519 AAAA... your_key_here"
-  # ];
-  
-  environment.systemPackages = with pkgs; [
-
-    # Editors & Dev Tools
-    vscode
-    git
-    nano
-
-    # CLI Utilities
-    curl
-    wget
-    htop
-    unzip
-    unrar
-    fzf
-    bash-completion
-    atuin
-
-    # Media & Communication
-    vlc
-    discord
-    spotify
-
-    # Point-of-life stuff
-    brave
-    joplin-desktop
-  ];
-
-  services.xserver.enable = true;
-  services.displayManager.gdm.enable = true;
-  services.displayManager.gdm.wayland = false;  # Avoid Wayland due to NVIDIA
+  time.timeZone = "Europe/Oslo";
+  i18n.defaultLocale = "en_US.UTF-8";
 }
