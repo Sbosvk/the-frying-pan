@@ -20,16 +20,10 @@ in
     pantheon.switchboard-plug-useraccounts
   ];
 
-  users.users.${vars.username} = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "audio" "video" ];
-    shell = pkgs.zsh;
-  };
-
   # Jellyfin
   services.jellyfin = {
-  enable = true;
-  openFirewall = true;  # Optional: if you want network access
+    enable = true;
+    openFirewall = true;  # Optional: if you want network access
   };
 
   # Persist data
