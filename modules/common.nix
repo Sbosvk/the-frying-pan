@@ -39,7 +39,7 @@ in
   users.users.${username} = {
     isNormalUser = true;
     description = "Default User";
-    extraGroups = [ "wheel" "networkmanager" "audio" "video" ];
+    extraGroups = [ "wheel" "networkmanager" "audio" "video" "games"];
     shell = pkgs.zsh;
     # openssh.authorizedKeys.keys = [
     #   "ssh-ed25519 AAAA... your_key_here"
