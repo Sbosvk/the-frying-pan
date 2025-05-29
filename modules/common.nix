@@ -66,4 +66,30 @@ in
 
   time.timeZone = "Europe/Oslo";
   i18n.defaultLocale = "en_US.UTF-8";
+
+  environment.systemPackages = with pkgs; [
+  # Essentials
+  git
+  curl
+  wget
+  nano
+  unzip
+  unrar
+  htop
+  vlc
+  firefox
+  pavucontrol
+  file
+  atuin
+
+  # Desktop integration
+  xdg-utils
+  xdg-desktop-portal
+
+  # Communication
+  discord
+
+  # Developer support
+  vscode 
+];
 }
