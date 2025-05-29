@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  time.timeZone = "Europe/Stockholm";
+  i18n.defaultLocale = "en_US.UTF-8";
+  
   environment.systemPackages = with pkgs; [
 
     # Editors & Dev Tools
