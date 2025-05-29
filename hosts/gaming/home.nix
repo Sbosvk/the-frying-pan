@@ -21,8 +21,5 @@ in
     mangohud
   ];
 
-  # Use Studio drivers by default
-  xdg.configFile."nvidia-driver-profile".text = "game";
-
   home.stateVersion = "25.05";
 }
