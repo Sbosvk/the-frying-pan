@@ -9,6 +9,8 @@ in
     ../../modules/nvidia-driver-selection.nix
   ];
 
+  custom.username = vars.username;
+
   custom.nvidiaDriverMode = "game";
   services.desktopManager.xfce.enable = true;
 

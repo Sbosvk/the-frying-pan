@@ -1,3 +1,5 @@
+{ config, pkgs, ... }:
+
 let
   vars = import ../../variables.nix;
 in
@@ -6,6 +8,8 @@ in
     ../../modules/common.nix
     ../../modules/nvidia-driver-selection.nix
   ];
+
+  custom.username = vars.username;
 
   custom.nvidiaDriverMode = "studio";
   services.desktopManager.pantheon.enable = true;

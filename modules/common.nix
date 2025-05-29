@@ -1,6 +1,16 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
+let
+  username = config.custom.username;
+  homePath = "/home/${username}";
+in
 {
+  options.custom.username = lib.mkOption {
+    type = lib.types.str;
+    default = "defaultuser";
+    description = "Username used on the system.";
+  };
+
   boot.initrd.luks.devices = {
     home = {
       device = "/dev/disk/by-uuid/4c96db13-b1ab-4c9b-bc85-a2dda35d8d44";
@@ -14,19 +24,19 @@
     fsType = "ext4";
   };
 
-  fileSystems."/media/plex/Shows" = {
-    device = "/home/ardvard/Torrents/Shows";
+  fileSystems."/media/jelly/Shows" = {
+    device = "${homePath}/Torrents/Shows";
     fsType = "none";
     options = [ "bind" ];
   };
 
-  fileSystems."/media/plex/Movies" = {
-    device = "/home/ardvard/Torrents/Movies";
+  fileSystems."/media/jelly/Movies" = {
+    device = "${homePath}/Torrents/Movies";
     fsType = "none";
     options = [ "bind" ];
   };
 
-  users.users.ardvard = {
+  users.users.${username} = {
     isNormalUser = true;
     description = "Default User";
     extraGroups = [ "wheel" "networkmanager" "audio" "video" ];
