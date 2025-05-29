@@ -39,9 +39,9 @@
   };
 
   # Public keys for all users (example user setup)
-  users.users.youruser.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAA... your_key_here"
-  ];
+  # users.users.youruser.openssh.authorizedKeys.keys = [
+  #   "ssh-ed25519 AAAA... your_key_here"
+  # ];
   
   environment.systemPackages = with pkgs; [
 
