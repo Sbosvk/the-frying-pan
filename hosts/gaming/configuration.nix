@@ -29,12 +29,5 @@ in
     ];
   };
 
-  # Declare system user using variables
-  users.users.${vars.username} = {
-    isNormalUser = true;
-    extraGroups = [ "video" "audio" "games" ];
-    shell = pkgs.zsh;
-  };
-
   system.stateVersion = "25.05";
 }

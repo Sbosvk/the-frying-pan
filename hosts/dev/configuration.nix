@@ -16,12 +16,6 @@ in
 
   virtualisation.docker.enable = true;
 
-  users.users.${vars.username} = {
-    isNormalUser = true;
-    extraGroups = [ "docker" "wheel" "networkmanager" "audio" "video" ];
-    shell = pkgs.zsh;
-  };
-
   services.openssh.enable = true;
 
   system.stateVersion = "25.05";
