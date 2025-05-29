@@ -22,6 +22,17 @@ in
     shell = pkgs.zsh;
   };
 
+  # Jellyfin
+  services.jellyfin = {
+  enable = true;
+  openFirewall = true;  # Optional: if you want network access
+  };
+
+  # Persist data
+  environment.persistence."/persist" = {
+    directories = [ "/var/lib/jellyfin" ];
+  };
+
   # services.printing.enable = true;         # if printing from graphics apps
   # services.avahi.enable = true;            # for network discovery
 
