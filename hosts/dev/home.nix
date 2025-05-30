@@ -30,7 +30,7 @@ in
   home.file.".nvm/install.sh" = {
     source = builtins.fetchurl {
       url = "https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh";
-      sha256 = "TODO"; # Replace with actual sha256
+      sha256 = "0pr72prvdxcdz694y406ki3gmwj3rpp8rn4s7017rc1w9ak5k0rd";
     };
   };
 
