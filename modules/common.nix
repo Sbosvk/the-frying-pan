@@ -19,10 +19,24 @@ in
     };
   };
 
-  fileSystems."/home" = {
+  fileSystems."/persist" = {
     device = "/dev/mapper/home_crypt";
     fsType = "ext4";
   };
+
+    environment.persistence."/persist" = {
+      directories = [
+        "/home"
+        "/etc/nixos"
+        "/etc/ssh"
+        "/var/lib/bluetooth"
+        "/etc/NetworkManager"
+        "/etc/machine-id"
+        "/var/lib/bluetooth"
+        "/var/lib/systemd"
+        "/var/lib/jellyfin"
+      ];
+    };
 
   fileSystems."/media/jelly/Shows" = {
     device = "${homePath}/Torrents/Shows";
